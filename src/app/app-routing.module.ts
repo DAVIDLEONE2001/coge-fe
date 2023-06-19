@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponent } from './features/welcome/welcome.component';
+import { RisorsaListComponent } from './features/risorsa/risorsa-list/risorsa-list.component';
 
 const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
-  // { path: 'libro/list', component: LibroListComponent },
+  { path: 'risorsa/list', component: RisorsaListComponent },
   // { path: 'libro/create', component: LibroCreateComponent },
   // { path: 'libro/:id', component: LibroDetailComponent },
   // { path: 'libro/edit/:id', component: LibroEditComponent },

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="it" class="h-100">
+  <head>
+    <!-- Common imports in pages -->
+
+    <title>Pagina dei Risultati</title>
+  </head>
+
+  <body class="d-flex flex-column h-100">
+    <!-- Fixed navbar -->
+
+    <!-- Begin page content -->
+    <main class="flex-shrink-0">
+      <div class="container">
+        <div class="card">
+          <div class="card-header">
+            <h5>Lista dei risultati</h5>
+          </div>
+          <div class="card-body">
+            <button class="btn btn-primary" routerLink="/appartamento/create">
+              Add New
+            </button>
+
+            <div class="table-responsive" *ngIf="risorseList">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th>E-mail</th>
+                    <th>Data Assunzione</th>
+                    <th>Data Dimissione</th>
+                    <th>Azioni</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor="let risorsaItem of risorseList">
+                    <td>{{ risorsaItem.nome }}</td>
+                    <td>{{ risorsaItem.cognome }}</td>
+                    <td>{{ risorsaItem.email }}</td>
+                    <td>
+                      {{
+                        risorsaItem.data_in | date : 'dd/MM/yyyy'
+                      }}
+                    </td>
+                    <td>
+                      {{
+                        risorsaItem.data_out | date : "dd/MM/yyyy"
+                      }}
+                    </td>
+
+                    <td>
+                      <button
+                        [routerLink]="['/appartamento', risorsaItem.id]"
+                        class="btn btn-primary btn-lg"
+                        class="btn btn-sm btn-outline-secondary"
+                      >
+                        Visualizza
+                      </button>
+                      <button
+                        class="btn btn-sm btn-outline-primary ml-2 mr-2"
+                        [routerLink]="['/appartamento/edit', risorsaItem.id]"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        class="btn btn-outline-danger btn-sm"
+                        [routerLink]="['/appartamento/remove', risorsaItem.id]"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- end card-body -->
+          </div>
+          <!-- end card -->
+        </div>
+
+        <!-- end container -->
+      </div>
+      <br />
+    </main>
+
+    <!-- Footer -->
+  </body>
+</html>
