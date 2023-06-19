@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="it" class="h-100">
+  <head>
+    <!-- Common imports in pages -->
+    <title>Pagina dei Risultati</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <!-- Fixed navbar -->
+    <!-- Begin page content -->
+    <main class="flex-shrink-0">
+      <div class="container">
+        <div class="card">
+          <div class="card-header">
+            <h5>Lista delle commesse</h5>
+          </div>
+          <div class="card-body">
+            <button class="btn btn-primary" routerLink="/appartamento/create">
+              Aggiungi Nuova
+            </button>
+
+            <div class="table-responsive" *ngIf="commessaList">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Codice</th>
+                    <th>Data In</th>
+                    <th>Data Out</th>
+                    <th>Descrizione</th>
+                    <th>Importo</th>
+                    <th>Azioni</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor="let commessaItem of commessaList">
+                    <td>{{ commessaItem.codice }}</td>
+                    <td>{{ commessaItem.dataIn | date : "dd/MM/yyyy" }}</td>
+                    <td>{{ commessaItem.dataOut | date : "dd/MM/yyyy" }}</td>
+                    <td>{{ commessaItem.descrizione }}</td>
+                    <td>{{ commessaItem.importo }}</td>
+
+                    <td>
+                      <button
+                        [routerLink]="['/commessa', commessaItem.id]"
+                        class="btn btn-primary btn-sm"
+                      >
+                        Visualizza
+                      </button>
+                      <button
+                        class="btn btn-outline-primary btn-sm ml-2"
+                        [routerLink]="['/commessa/edit', commessaItem.id]"
+                      >
+                        Modifica
+                      </button>
+                      <button
+                        class="btn btn-outline-danger btn-sm ml-2"
+                        [routerLink]="['/commessa/remove', commessaItem.id]"
+                      >
+                        Elimina
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- end card-body -->
+          </div>
+          <!-- end card -->
+        </div>
+
+        <!-- end container -->
+      </div>
+      <br />
+    </main>
+
+    <!-- Footer -->
+  </body>
+</html>

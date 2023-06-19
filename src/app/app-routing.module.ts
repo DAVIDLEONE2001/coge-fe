@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponent } from './features/welcome/welcome.component';
 import { RisorsaListComponent } from './features/risorsa/risorsa-list/risorsa-list.component';
+import { CommessaListComponent } from './features/commessa/commessa-list/commessa-list.component';
 
 const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
   { path: 'risorsa/list', component: RisorsaListComponent },
+  { path: 'commessa/list', component: CommessaListComponent },
   // { path: 'libro/create', component: LibroCreateComponent },
   // { path: 'libro/:id', component: LibroDetailComponent },
   // { path: 'libro/edit/:id', component: LibroEditComponent },

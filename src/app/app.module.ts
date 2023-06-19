@@ -7,6 +7,7 @@ import { FooterComponent } from './core/layout/footer/footer.component';
 import { NavbarComponent } from './core/layout/navbar/navbar.component';
 import { RisorsaListComponent } from './features/risorsa/risorsa-list/risorsa-list.component';
 import { WelcomeComponent } from './features/welcome/welcome.component';
+import { CommessaListComponent } from './features/commessa/commessa-list/commessa-list.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { WelcomeComponent } from './features/welcome/welcome.component';
     NavbarComponent,
     FooterComponent,
     RisorsaListComponent,
+    CommessaListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
