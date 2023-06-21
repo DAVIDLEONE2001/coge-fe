@@ -14,7 +14,7 @@
             <h5>Lista delle commesse</h5>
           </div>
           <div class="card-body">
-            <button class="btn btn-primary" routerLink="/appartamento/create">
+            <button class="btn btn-primary" routerLink="/commessa/create">
               Aggiungi Nuova
             </button>
 
@@ -41,7 +41,7 @@
 
                     <td>
                       <button
-                        [routerLink]="['/commessa', commessaItem.id]"
+                        [routerLink]="['/commessa/detail', commessaItem.id]"
                         class="btn btn-primary btn-sm"
                       >
                         Visualizza

@@ -1,0 +1,49 @@
+<main class="flex-shrink-0">
+  <div class="container">
+    <div class="card">
+      <div class="card-header">Visualizza dettaglio</div>
+
+      <div class="card-body">
+        <dl class="row">
+          <dt class="col-sm-3 text-right">Id:</dt>
+          <dd class="col-sm-9">{{ commessaDetail?.id }}</dd>
+        </dl>
+
+        <dl class="row">
+          <dt class="col-sm-3 text-right">Codice:</dt>
+          <dd class="col-sm-9">{{ commessaDetail?.codice }}</dd>
+        </dl>
+
+        <dl class="row">
+          <dt class="col-sm-3 text-right">Descrizione:</dt>
+          <dd class="col-sm-9">{{ commessaDetail?.descrizione }}</dd>
+        </dl>
+
+        <dl class="row">
+          <dt class="col-sm-3 text-right">Data In:</dt>
+          <dd class="col-sm-9">
+            {{ commessaDetail?.dataIn | date : "dd/MM/yyyy" }}
+          </dd>
+        </dl>
+
+        <dl class="row">
+          <dt class="col-sm-3 text-right">Data Out:</dt>
+          <dd class="col-sm-9">
+            {{ commessaDetail?.dataOut | date : "dd/MM/yyyy" }}
+          </dd>
+        </dl>
+
+        <dl class="row">
+          <dt class="col-sm-3 text-right">Importo:</dt>
+          <dd class="col-sm-9">{{ commessaDetail?.importo }}</dd>
+        </dl>
+
+        <button (click)="onBack()" class="btn btn-primary btn-lg">
+          Torna alla lista
+        </button>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card -->
+  </div>
+</main>
