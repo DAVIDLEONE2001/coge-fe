@@ -7,11 +7,8 @@ import { FooterComponent } from './core/layout/footer/footer.component';
 import { NavbarComponent } from './core/layout/navbar/navbar.component';
 import { RisorsaListComponent } from './features/risorsa/risorsa-list/risorsa-list.component';
 import { WelcomeComponent } from './features/welcome/welcome.component';
-import { CommessaListComponent } from './features/commessa/commessa-list/commessa-list.component';
-import { CommessaEditComponent } from './features/commessa/commessa-edit/commessa-edit.component';
-import { CommessaDetailComponent } from './features/commessa/commessa-detail/commessa-detail.component';
-import { CommessaDeleteComponent } from './features/commessa/commessa-delete/commessa-delete.component';
-import { CommessaCreateComponent } from './features/commessa/commessa-create/commessa-create.component';
+import { AziendaListComponent } from './features/azienda/azienda-list/azienda-list.component';
+import { AziendaDetailComponent } from './features/azienda/azienda-detail/azienda-detail.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +17,8 @@ import { CommessaCreateComponent } from './features/commessa/commessa-create/com
     NavbarComponent,
     FooterComponent,
     RisorsaListComponent,
-    CommessaListComponent,
-    CommessaEditComponent,
-    CommessaDetailComponent,
-    CommessaDeleteComponent,
-    CommessaCreateComponent,
+    AziendaListComponent,
+    AziendaDetailComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

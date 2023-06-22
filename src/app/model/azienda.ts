@@ -5,5 +5,5 @@ export interface Azienda {
     partitaIva:String;
     indirizzo:String;
     // commesse:Commessa;        inserire commessa
-
+    
 }
