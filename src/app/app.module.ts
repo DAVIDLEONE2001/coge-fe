@@ -9,6 +9,11 @@ import { RisorsaListComponent } from './features/risorsa/risorsa-list/risorsa-li
 import { WelcomeComponent } from './features/welcome/welcome.component';
 import { AziendaListComponent } from './features/azienda/azienda-list/azienda-list.component';
 import { AziendaDetailComponent } from './features/azienda/azienda-detail/azienda-detail.component';
+import { CommessaDetailComponent } from './features/commessa/commessa-detail/commessa-detail.component';
+import { CommessaDeleteComponent } from './features/commessa/commessa-delete/commessa-delete.component';
+import { CommessaEditComponent } from './features/commessa/commessa-edit/commessa-edit.component';
+import { CommessaCreateComponent } from './features/commessa/commessa-create/commessa-create.component';
+import { CommessaListComponent } from './features/commessa/commessa-list/commessa-list.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +24,11 @@ import { AziendaDetailComponent } from './features/azienda/azienda-detail/aziend
     RisorsaListComponent,
     AziendaListComponent,
     AziendaDetailComponent,
+    CommessaDetailComponent,
+    CommessaDeleteComponent,
+    CommessaEditComponent,
+    CommessaCreateComponent,
+    CommessaListComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
