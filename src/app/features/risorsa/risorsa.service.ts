@@ -30,4 +30,12 @@ export class RisorsaService {
     };
   }
 
+  findById(id: number): Observable<Risorsa | undefined> {
+    // return of(this.atletiDBMock.find((atleta: Atleta) => atleta.id === id));
+    const url = `${this.risorsaUrl}/${id}`;
+    return this.http
+      .get<Risorsa>(url)
+      .pipe(catchError(this.handleError<Risorsa>(`getrisorsa id=${id}`)));
+  }
+
 }

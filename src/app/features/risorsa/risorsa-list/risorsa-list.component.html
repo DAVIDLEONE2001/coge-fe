@@ -41,18 +41,18 @@
                     <td>{{ risorsaItem.email }}</td>
                     <td>
                       {{
-                        risorsaItem.data_in | date : 'dd/MM/yyyy'
+                        risorsaItem.dataIn | date : 'dd/MM/yyyy'
                       }}
                     </td>
                     <td>
                       {{
-                        risorsaItem.data_out | date : "dd/MM/yyyy"
+                        risorsaItem.dataOut | date : "dd/MM/yyyy"
                       }}
                     </td>
 
                     <td>
                       <button
-                        [routerLink]="['/appartamento', risorsaItem.id]"
+                        [routerLink]="['/risorsa', risorsaItem.id]"
                         class="btn btn-primary btn-lg"
                         class="btn btn-sm btn-outline-secondary"
                       >

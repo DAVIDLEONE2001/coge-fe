@@ -4,9 +4,9 @@ export interface Risorsa {
   id:number;
   nome:string;
   cognome:string;
-  data_in?:Date;
-  data_out?:Date;
-  cf:string;
+  dataIn?:Date;
+  dataOut?:Date;
+  codiceFiscale:string;
   email:string;
   costoGiornaliero:number;
   cv:Attachment;
