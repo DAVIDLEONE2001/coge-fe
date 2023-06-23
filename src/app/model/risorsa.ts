@@ -2,7 +2,7 @@ import { Attachment } from "./attachment";
 import { Commessa } from "./commessa";
 
 export interface Risorsa {
-  id:number;
+  id?:number;
   nome:string;
   cognome:string;
   dataIn:Date;
@@ -10,7 +10,7 @@ export interface Risorsa {
   codiceFiscale:string;
   email:string;
   costoGiornaliero:number;
-  cv:Attachment;
-  commesse:Array<Commessa>;//to-do
-  rapportini:string;//to-do
+  cv?:Attachment;
+  commesse?:Array<Commessa>;//to-do
+  rapportini?:string;//to-do
 }

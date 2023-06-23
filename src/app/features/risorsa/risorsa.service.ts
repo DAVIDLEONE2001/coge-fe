@@ -21,6 +21,15 @@ export class RisorsaService {
       .pipe(catchError(this.handleError));
   }
 
+  addRisorsa(risorsa: Risorsa): Observable<Risorsa> {
+    // atleta.id = this.getNextId();
+    // this.atletiDBMock.push(atleta);
+    // return of(atleta);
+    return this.http
+      .post<Risorsa>(this.risorsaUrl, risorsa, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
   findById(id: number): Observable<Risorsa | undefined> {
     // return of(this.atletiDBMock.find((atleta: Atleta) => atleta.id === id));
     const url = `${this.risorsaUrl}/${id}`;

@@ -1,0 +1,261 @@
+<main class="flex-shrink-0">
+  <div class="container">
+    <div
+      class="alert alert-danger alert-dismissible fade show"
+      role="alert"
+      *ngIf="errorMessage"
+    >
+      {{ errorMessage }}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h5>Inserisci nuovo elemento</h5>
+      </div>
+      <div class="card-body">
+        <form
+          (ngSubmit)="save(risorsaNewForm)"
+          #risorsaNewForm="ngForm"
+          class="row g-3"
+        >
+          <div class="col-md-6">
+            <label>Nome <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Inserire il nome"
+              required
+              minlength="2"
+              id="nome"
+              name="nome"
+              [(ngModel)]="risorsaNew.nome"
+              #nomeVar="ngModel"
+              [ngClass]="{
+                'is-invalid':
+                  (nomeVar.touched || nomeVar.dirty) && !nomeVar.valid
+              }"
+            />
+            <span class="invalid-feedback">
+              <span *ngIf="nomeVar.errors?.['required']">
+                Prego inserire un valore
+              </span>
+              <span *ngIf="nomeVar.errors?.['minlength']">
+                Il campo deve avere almeno due caratteri.
+              </span>
+            </span>
+          </div>
+
+          <div class="col-md-6">
+            <label>Cognome <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Inserire cognome"
+              minlength="2"
+              id="cognome"
+              required
+              name="cognome"
+              [(ngModel)]="risorsaNew.cognome"
+              #cognomeVar="ngModel"
+              [ngClass]="{
+                'is-invalid':
+                  (cognomeVar.touched || cognomeVar.dirty) && !cognomeVar.valid
+              }"
+            />
+            <span class="invalid-feedback">
+              <span *ngIf="cognomeVar.errors?.['required']">
+                Prego inserire un valore
+              </span>
+              <span *ngIf="cognomeVar.errors?.['minlength']">
+                Il campo deve avere almeno due caratteri.
+              </span>
+            </span>
+          </div>
+
+          <div class="col-md-6">
+            <label>Codice Fiscale <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Inserire Codice Fiscale"
+              minlength="2"
+              id="codiceFiscale"
+              required
+              name="codiceFiscale"
+              [(ngModel)]="risorsaNew.codiceFiscale"
+              #codiceFiscaleVar="ngModel"
+              [ngClass]="{
+                'is-invalid':
+                  (codiceFiscaleVar.touched || codiceFiscaleVar.dirty) &&
+                  !codiceFiscaleVar.valid
+              }"
+            />
+            <span class="invalid-feedback">
+              <span *ngIf="codiceFiscaleVar.errors?.['required']">
+                Prego inserire Codice Fiscale
+              </span>
+              <span *ngIf="codiceFiscaleVar.errors?.['minlength']">
+                Il campo deve avere almeno due caratteri.
+              </span>
+            </span>
+          </div>
+
+          <div class="col-md-6">
+            <label>Email <span class="text-danger">*</span></label>
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Inserire email"
+              minlength="2"
+              id="email"
+              required
+              name="email"
+              [(ngModel)]="risorsaNew.email"
+              #emailVar="ngModel"
+              [ngClass]="{
+                'is-invalid':
+                  (emailVar.touched || emailVar.dirty) && !emailVar.valid
+              }"
+            />
+            <span class="invalid-feedback">
+              <span *ngIf="emailVar.errors?.['required']">
+                Prego inserire Email
+              </span>
+              <span *ngIf="emailVar.errors?.['minlength']">
+                Il campo deve avere almeno due caratteri.
+              </span>
+            </span>
+          </div>
+
+          <div class="col-md-3">
+            <label>Data Assunzione<span class="text-danger">*</span></label>
+            <input
+              type="date"
+              class="form-control"
+              placeholder="dd/MM/yy"
+              required
+              [max]="getTodayDate()"
+              id="dataIn"
+              name="dataIn"
+              title="formato : gg/mm/aaaa"
+              [(ngModel)]="risorsaNew.dataIn"
+              #dataInVar="ngModel"
+              [ngClass]="{
+                'is-invalid':
+                  (dataInVar.touched || dataInVar.dirty) &&
+                  (!dataInVar.valid || !risorsaNew.dataIn)
+              }"
+            />
+            <span class="invalid-feedback">
+              <span *ngIf="dataInVar.errors?.['required']">
+                Prego inserire un valore
+              </span>
+              <span *ngIf="dataInVar.errors?.['max']">
+                Il campo non deve essere fututo.
+              </span>
+            </span>
+          </div>
+          <div class="col-md-3">
+            <label>Data Dimissione<span class="text-danger">*</span></label>
+            <input
+              type="date"
+              class="form-control"
+              placeholder="dd/MM/yy"
+              [min]="risorsaNew.dataIn"
+              id="dataOut"
+              name="dataOut"
+              title="formato : gg/mm/aaaa"
+              [(ngModel)]="risorsaNew.dataOut"
+              #dataOutVar="ngModel"
+              [ngClass]="{
+                'is-invalid':
+                  (dataOutVar.touched || dataOutVar.dirty) &&
+                  (!dataOutVar.valid || !risorsaNew.dataOut)
+              }"
+            />
+            <span class="invalid-feedback">
+              <span *ngIf="dataInVar.errors?.['required']">
+                Prego inserire un valore
+              </span>
+              <span *ngIf="dataInVar.errors?.['min']">
+                Il campo non deve essere previo assunzione.
+              </span>
+            </span>
+          </div>
+
+          <div class="col-md-6">
+            <label>Costo Giornaliero <span class="text-danger">*</span></label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Inserire il costo giornaliero"
+              required
+              min="0"
+              id="costoGiornaliero"
+              name="costoGiornaliero"
+              [(ngModel)]="risorsaNew.costoGiornaliero"
+              #costoGiornalieroVar="ngModel"
+              [ngClass]="{
+                'is-invalid':
+                  (costoGiornalieroVar.touched || costoGiornalieroVar.dirty) &&
+                  !costoGiornalieroVar.valid
+              }"
+            />
+            <span class="invalid-feedback">
+              <span *ngIf="costoGiornalieroVar.errors?.['required']">
+                Prego inserire un valore
+              </span>
+              <span *ngIf="costoGiornalieroVar.errors?.['min']">
+                Il campo deve contenere un numero positivo
+              </span>
+            </span>
+          </div>
+          <div class="col-md-6" >
+            <label>CV <span class="text-danger">*</span></label>
+            <input
+              type="file"
+              class="form-control"
+              required
+              id="cv"
+              name="cv"
+              (change)="handleCVFile($event)"
+            />
+          </div>
+
+          <div class="col-12">
+            <button
+              type="submit"
+              name="submitButton"
+              value="submitButton"
+              id="submitButton"
+              class="btn btn-primary"
+              [disabled]="!risorsaNewForm.form.valid"
+            >
+              Conferma
+            </button>
+            <a
+              routerLink="/risorsa/list"
+              class="btn btn-outline-secondary"
+              style="width: 80px"
+            >
+              <i class="fa fa-chevron-left"></i> Back
+            </a>
+          </div>
+        </form>
+        <!-- {{ libro | json }} -->
+
+        <!-- end card-body -->
+      </div>
+      <!-- end card -->
+    </div>
+    <!-- end container -->
+  </div>
+
+  <!-- end main -->
+</main>

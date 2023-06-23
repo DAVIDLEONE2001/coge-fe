@@ -26,7 +26,7 @@ export class RisorsaDeleteComponent {
   }
 
   delete() {
-    if (this.risorsaDelete) {
+    if (this.risorsaDelete&&this.risorsaDelete.id) {
       this.risorsaService.removeRisorsa(this.risorsaDelete.id).subscribe(
         () => {
           this.router.navigate(['/risorsa/list']);

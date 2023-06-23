@@ -10,10 +10,12 @@ import { CommessaEditComponent } from './features/commessa/commessa-edit/commess
 import { CommessaDeleteComponent } from './features/commessa/commessa-delete/commessa-delete.component';
 import { RisorsaDetailComponent } from './features/risorsa/risorsa-detail/risorsa-detail.component';
 import { RisorsaDeleteComponent } from './features/risorsa/risorsa-delete/risorsa-delete.component';
+import { RisorsaInsertComponent } from './features/risorsa/risorsa-insert/risorsa-insert.component';
 
 const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
   { path: 'risorsa/list', component: RisorsaListComponent },
+  { path: 'risorsa/create', component: RisorsaInsertComponent },
   { path: 'risorsa/:id', component: RisorsaDetailComponent },
   { path: 'risorsa/delete/:id', component: RisorsaDeleteComponent },
   { path: 'azienda/list', component: AziendaListComponent },
