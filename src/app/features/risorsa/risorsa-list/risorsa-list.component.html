@@ -12,6 +12,15 @@
     <!-- Begin page content -->
     <main class="flex-shrink-0">
       <div class="container">
+
+        <div
+				class="alert alert-success alert-dismissible fade show " *ngIf="confirmMessage"
+				role="alert">
+				{{confirmMessage}}
+				<button type="button" class="btn-close" data-bs-dismiss="alert"
+					aria-label="Close"></button>
+			</div>
+
         <div class="card">
           <div class="card-header">
             <h5>Lista dei risultati</h5>
@@ -66,7 +75,7 @@
                       </button>
                       <button
                         class="btn btn-outline-danger btn-sm"
-                        [routerLink]="['/appartamento/remove', risorsaItem.id]"
+                        [routerLink]="['/risorsa/delete', risorsaItem.id]"
                       >
                         Delete
                       </button>

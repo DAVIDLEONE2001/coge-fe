@@ -1,10 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, of } from 'rxjs';
+import { Observable, catchError, of, throwError } from 'rxjs';
 import { Risorsa } from 'src/app/model/risorsa';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RisorsaService {
   private risorsaUrl = 'http://localhost:8080/api/risorsa';
@@ -18,16 +18,7 @@ export class RisorsaService {
   getRisorse(): Observable<Array<Risorsa>> {
     return this.http
       .get<Array<Risorsa>>(this.risorsaUrl)
-      .pipe(catchError(this.handleError<Risorsa[]>('getRisorsa', [])));
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error); // log to console instead
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
+      .pipe(catchError(this.handleError));
   }
 
   findById(id: number): Observable<Risorsa | undefined> {
@@ -35,7 +26,31 @@ export class RisorsaService {
     const url = `${this.risorsaUrl}/${id}`;
     return this.http
       .get<Risorsa>(url)
-      .pipe(catchError(this.handleError<Risorsa>(`getrisorsa id=${id}`)));
+      .pipe(catchError(this.handleError));
   }
 
+  removeRisorsa(id: number): Observable<any> {
+    // this.atletiDBMock = this.atletiDBMock.filter(
+    //   (atleta: Atleta) => atleta.id !== id
+    // );
+    const url = `${this.risorsaUrl}/${id}`;
+
+    return this.http
+      .delete<any>(url, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+  handleError(error: any) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // client-side error
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(() => {
+      return errorMessage;
+    });
+  }
 }

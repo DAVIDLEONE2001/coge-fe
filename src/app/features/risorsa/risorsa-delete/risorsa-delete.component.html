@@ -1,0 +1,83 @@
+
+
+	   		<!-- Fixed navbar -->
+
+
+			<!-- Begin page content -->
+			<main class="flex-shrink-0" >
+			  <div class="container" >
+
+          <div
+				class="alert alert-danger alert-dismissible fade show " *ngIf="errorMessage"
+				role="alert">
+				{{errorMessage}}
+				<button type="button" class="btn-close" data-bs-dismiss="alert"
+					aria-label="Close"></button>
+			</div>
+
+			  		<div class='card'>
+					    <div class='card-header'>
+					        <h5>Visualizza dettaglio</h5>
+					    </div>
+
+
+					    <div class='card-body' *ngIf="risorsaDelete">
+					    	<dl class="row">
+							  <dt class="col-sm-3 text-right">Id:</dt>
+							  <dd class="col-sm-9">{{risorsaDelete.id}}</dd>
+					    	</dl>
+
+					    	<dl class="row">
+							  <dt class="col-sm-3 text-right">Nome:</dt>
+							  <dd class="col-sm-9">{{risorsaDelete.nome}}</dd>
+					    	</dl>
+
+					    	<dl class="row">
+							  <dt class="col-sm-3 text-right">Cognome:</dt>
+							  <dd class="col-sm-9">{{risorsaDelete.cognome}}</dd>
+					    	</dl>
+
+                <dl class="row">
+							  <dt class="col-sm-3 text-right">Codice Fiscale:</dt>
+							  <dd class="col-sm-9">{{risorsaDelete.codiceFiscale}}</dd>
+					    	</dl>
+
+                <dl class="row">
+							  <dt class="col-sm-3 text-right">Email:</dt>
+							  <dd class="col-sm-9">{{risorsaDelete.email}}</dd>
+					    	</dl>
+
+					    	<dl class="row">
+							  <dt class="col-sm-3 text-right">Data Assunzione :</dt>
+							  <dd class="col-sm-9">{{ risorsaDelete.dataIn | date : "dd/MM/yyyy" }}</dd>
+					    	</dl>
+					    	<dl class="row" *ngIf="risorsaDelete.dataOut">
+							  <dt class="col-sm-3 text-right">Data Dimissione :</dt>
+							  <dd class="col-sm-9">{{ risorsaDelete.dataOut | date : "dd/MM/yyyy" }}</dd>
+					    	</dl>
+					    	<dl class="row">
+							  <dt class="col-sm-3 text-right">Costo Giornaliero:</dt>
+							  <dd class="col-sm-9">{{ risorsaDelete.costoGiornaliero}}</dd>
+					    	</dl>
+
+
+					    <!-- end card body -->
+              <div class='card-footer'>
+                <a routerLink="/risorsa/list" class='btn btn-outline-secondary' style='width:80px'>
+                    <i class='fa fa-chevron-left'></i> Back
+                </a>
+                <button type="submit" name="submit" id="submit" (click)="delete()" class="btn btn-danger">Conferma</button>
+            </div>
+
+					    </div>
+					<!-- end card -->
+					</div>
+
+
+			  <!-- end container -->
+			  </div>
+
+			</main>
+
+			<!-- Footer -->
+

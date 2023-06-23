@@ -9,11 +9,13 @@ import { CommessaCreateComponent } from './features/commessa/commessa-create/com
 import { CommessaEditComponent } from './features/commessa/commessa-edit/commessa-edit.component';
 import { CommessaDeleteComponent } from './features/commessa/commessa-delete/commessa-delete.component';
 import { RisorsaDetailComponent } from './features/risorsa/risorsa-detail/risorsa-detail.component';
+import { RisorsaDeleteComponent } from './features/risorsa/risorsa-delete/risorsa-delete.component';
 
 const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
   { path: 'risorsa/list', component: RisorsaListComponent },
   { path: 'risorsa/:id', component: RisorsaDetailComponent },
+  { path: 'risorsa/delete/:id', component: RisorsaDeleteComponent },
   { path: 'azienda/list', component: AziendaListComponent },
   { path: 'commessa/list', component: CommessaListComponent },
   { path: 'commessa/detail/:id', component: CommessaDetailComponent },
