@@ -11,6 +11,7 @@ import { CommessaDeleteComponent } from './features/commessa/commessa-delete/com
 import { RisorsaDetailComponent } from './features/risorsa/risorsa-detail/risorsa-detail.component';
 import { RisorsaDeleteComponent } from './features/risorsa/risorsa-delete/risorsa-delete.component';
 import { RisorsaInsertComponent } from './features/risorsa/risorsa-insert/risorsa-insert.component';
+import { RisorsaEditComponent } from './features/risorsa/risorsa-edit/risorsa-edit.component';
 
 const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'risorsa/create', component: RisorsaInsertComponent },
   { path: 'risorsa/:id', component: RisorsaDetailComponent },
   { path: 'risorsa/delete/:id', component: RisorsaDeleteComponent },
+  { path: 'risorsa/edit/:id', component: RisorsaEditComponent },
   { path: 'azienda/list', component: AziendaListComponent },
   { path: 'commessa/list', component: CommessaListComponent },
   { path: 'commessa/detail/:id', component: CommessaDetailComponent },

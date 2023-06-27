@@ -1,18 +1,18 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
+import { Attachment } from 'src/app/model/attachment';
+import { Commessa } from 'src/app/model/commessa';
 import { Risorsa } from 'src/app/model/risorsa';
 import { RisorsaService } from '../risorsa.service';
-import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
-import { Attachment } from 'src/app/model/attachment';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommessaService } from '../../commessa/commessa.service';
-import { Commessa } from 'src/app/model/commessa';
+import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'cog-risorsa-insert',
-  templateUrl: './risorsa-insert.component.html',
-  styleUrls: ['./risorsa-insert.component.css'],
+  selector: 'cog-risorsa-edit',
+  templateUrl: './risorsa-edit.component.html',
+  styleUrls: ['./risorsa-edit.component.css'],
 })
-export class RisorsaInsertComponent implements OnInit {
+export class RisorsaEditComponent {
   risorsaNew: Risorsa = {
     id: undefined,
     nome: '',
@@ -22,14 +22,8 @@ export class RisorsaInsertComponent implements OnInit {
     codiceFiscale: '',
     email: '',
     costoGiornaliero: 0,
-    cv: {
-      id: 0,
-      fileName: '',
-      contentType: '',
-      descrizione: '',
-      dataCreazione: new Date(),
-      payload: [],
-    },
+
+    commesse: [],
   };
 
   commessaSearch?: string;
@@ -44,7 +38,8 @@ export class RisorsaInsertComponent implements OnInit {
   constructor(
     private risorsaService: RisorsaService,
     private router: Router,
-    private commessaService: CommessaService
+    private commessaService: CommessaService,
+    private activatedRoute: ActivatedRoute
   ) {}
   filterCheckboxes(): void {
     if (this.commessaSearch) {
@@ -56,6 +51,10 @@ export class RisorsaInsertComponent implements OnInit {
     } else this.commesseFiltrate = this.commesse;
   }
   ngOnInit(): void {
+    this.risorsaService
+      .findById(Number(this.activatedRoute.snapshot.paramMap.get('id')))
+      .subscribe((atlObs) => (this.risorsaNew = atlObs!));
+
     this.commessaService.getCommessa().subscribe({
       next: (commesse) => {
         this.commesse = commesse;
@@ -67,9 +66,21 @@ export class RisorsaInsertComponent implements OnInit {
   save(risorsaForm: NgForm): void {
     if (risorsaForm.valid) {
       // this.risorsaNew.cv=this.cv
-      console.log(this.risorsaNew);
-
-      this.risorsaService.addRisorsa(this.risorsaNew).subscribe({
+      const body = {
+        id: this.risorsaNew.id,
+        nome: this.risorsaNew.nome,
+        cognome: this.risorsaNew.cognome,
+        dataIn: this.risorsaNew.dataIn,
+        dataOut: this.risorsaNew.dataOut,
+        codiceFiscale: this.risorsaNew.codiceFiscale,
+        email: this.risorsaNew.email,
+        costoGiornaliero: this.risorsaNew.costoGiornaliero,
+        cv: this.risorsaNew.cv,
+        idsCommesse: this.idsCommesse,
+        idsRapportini: this.idsRapportini,
+      };
+      console.log(body);
+      this.risorsaService.editRisorsa(body).subscribe({
         next: (risorsaItem) => (this.risorsaNew = risorsaItem),
         complete: () =>
           this.router.navigate([`risorsa/list`], {
@@ -108,5 +119,10 @@ export class RisorsaInsertComponent implements OnInit {
       };
       fileReader.readAsArrayBuffer(files[0]);
     }
+  }
+  updateIdsCommesse() {
+    this.idsCommesse = this.commesse
+      .filter((commessa) => commessa)
+      .map((commessa) => commessa.id);
   }
 }

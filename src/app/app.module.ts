@@ -18,6 +18,7 @@ import { RisorsaDetailComponent } from './features/risorsa/risorsa-detail/risors
 import { FormsModule } from '@angular/forms';
 import { RisorsaDeleteComponent } from './features/risorsa/risorsa-delete/risorsa-delete.component';
 import { RisorsaInsertComponent } from './features/risorsa/risorsa-insert/risorsa-insert.component';
+import { RisorsaEditComponent } from './features/risorsa/risorsa-edit/risorsa-edit.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { RisorsaInsertComponent } from './features/risorsa/risorsa-insert/risors
     CommessaListComponent,
     RisorsaDetailComponent,
     RisorsaDeleteComponent,
-    RisorsaInsertComponent
+    RisorsaInsertComponent,
+    RisorsaEditComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule,FormsModule],
   providers: [],

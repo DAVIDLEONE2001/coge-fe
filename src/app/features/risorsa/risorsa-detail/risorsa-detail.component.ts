@@ -10,7 +10,9 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./risorsa-detail.component.css'],
 })
 export class RisorsaDetailComponent {
+
   risorsaDetail?: Risorsa;
+  toggleCommesse: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -52,7 +54,11 @@ export class RisorsaDetailComponent {
     }
   }
 
-  downloadCV(id: number) {
+  downloadCV(id: number, event?: MouseEvent) {
+    if (event) {
+      event.preventDefault();
+    }
+
     const arrayBuffer = this.base64ToArrayBuffer(
       String(this.risorsaDetail!.cv!.payload)
     );
@@ -61,6 +67,7 @@ export class RisorsaDetailComponent {
       this.risorsaDetail!.cv!.fileName
     );
   }
+
 
   getExtension(key: string): any {
     const predefinedMap = new Map([

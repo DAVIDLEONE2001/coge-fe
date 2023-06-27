@@ -1,81 +1,136 @@
+<!-- Fixed navbar -->
 
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h5>Visualizza dettaglio</h5>
+      </div>
 
-	   		<!-- Fixed navbar -->
+      <div class="card-body" *ngIf="risorsaDetail">
+        <dl class="row">
+          <dt class="col-sm-3 text-right">Id:</dt>
+          <dd class="col-sm-9">{{ risorsaDetail.id }}</dd>
+        </dl>
 
+        <dl class="row">
+          <dt class="col-sm-3 text-right">Nome:</dt>
+          <dd class="col-sm-9">{{ risorsaDetail.nome }}</dd>
+        </dl>
 
-			<!-- Begin page content -->
-			<main class="flex-shrink-0">
-			  <div class="container">
+        <dl class="row">
+          <dt class="col-sm-3 text-right">Cognome:</dt>
+          <dd class="col-sm-9">{{ risorsaDetail.cognome }}</dd>
+        </dl>
 
-			  		<div class='card'>
-					    <div class='card-header'>
-					        <h5>Visualizza dettaglio</h5>
-					    </div>
+        <dl class="row">
+          <dt class="col-sm-3 text-right">Codice Fiscale:</dt>
+          <dd class="col-sm-9">{{ risorsaDetail.codiceFiscale }}</dd>
+        </dl>
 
+        <dl class="row">
+          <dt class="col-sm-3 text-right">Email:</dt>
+          <dd class="col-sm-9">{{ risorsaDetail.email }}</dd>
+        </dl>
 
-					    <div class='card-body' *ngIf="risorsaDetail">
-					    	<dl class="row">
-							  <dt class="col-sm-3 text-right">Id:</dt>
-							  <dd class="col-sm-9">{{risorsaDetail.id}}</dd>
-					    	</dl>
+        <dl class="row">
+          <dt class="col-sm-3 text-right">Data Assunzione :</dt>
+          <dd class="col-sm-9">
+            {{ risorsaDetail.dataIn | date : "dd/MM/yyyy" }}
+          </dd>
+        </dl>
+        <dl class="row" *ngIf="risorsaDetail.dataOut">
+          <dt class="col-sm-3 text-right">Data Dimissione :</dt>
+          <dd class="col-sm-9">
+            {{ risorsaDetail.dataOut | date : "dd/MM/yyyy" }}
+          </dd>
+        </dl>
+        <dl class="row">
+          <dt class="col-sm-3 text-right">Costo Giornaliero:</dt>
+          <dd class="col-sm-9">{{ risorsaDetail.costoGiornaliero }}</dd>
+        </dl>
 
-					    	<dl class="row">
-							  <dt class="col-sm-3 text-right">Nome:</dt>
-							  <dd class="col-sm-9">{{risorsaDetail.nome}}</dd>
-					    	</dl>
+        <dl class="row">
+          <dt class="col-sm-3 text-right">CV:</dt>
+          <dd class="col-sm-9" *ngIf="risorsaDetail.cv">
+            <a href="#" (click)="downloadCV(risorsaDetail!.cv!.id!, $event)"
+              >Scarica CV</a
+            >
+          </dd>
+          <dd class="col-sm-9" *ngIf="!risorsaDetail.cv" [ngStyle]="{ color: 'red' }"> CV Assente</dd>
+        </dl>
 
-					    	<dl class="row">
-							  <dt class="col-sm-3 text-right">Cognome:</dt>
-							  <dd class="col-sm-9">{{risorsaDetail.cognome}}</dd>
-					    	</dl>
+        <div
+          class="table-responsive"
+          *ngIf="risorsaDetail.commesse && toggleCommesse"
+        >
+        <div class="card-header">
+          <h5>Commesse di {{ risorsaDetail.nome }}</h5>
+        </div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Codice</th>
+                <th>Data In</th>
+                <th>Data Out</th>
+                <th>Descrizione</th>
+                <th>Importo</th>
+                <th></th>
+              </tr>
+            </thead>
 
-                <dl class="row">
-							  <dt class="col-sm-3 text-right">Codice Fiscale:</dt>
-							  <dd class="col-sm-9">{{risorsaDetail.codiceFiscale}}</dd>
-					    	</dl>
+            <tbody>
+              <tr *ngFor="let commessaItem of risorsaDetail.commesse">
+                <td>{{ commessaItem.codice }}</td>
+                <td>{{ commessaItem.dataIn | date : "dd/MM/yyyy" }}</td>
+                <td>{{ commessaItem.dataOut | date : "dd/MM/yyyy" }}</td>
+                <td>{{ commessaItem.descrizione }}</td>
+                <td>{{ commessaItem.importo }}</td>
 
-                <dl class="row">
-							  <dt class="col-sm-3 text-right">Email:</dt>
-							  <dd class="col-sm-9">{{risorsaDetail.email}}</dd>
-					    	</dl>
+                <td>
+                  <button
+                    [routerLink]="['/commessa/detail', commessaItem.id]"
+                    class="btn btn-secondary btn-sm"
+                  >
+                    Visualizza
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-					    	<dl class="row">
-							  <dt class="col-sm-3 text-right">Data Assunzione :</dt>
-							  <dd class="col-sm-9">{{ risorsaDetail.dataIn | date : "dd/MM/yyyy" }}</dd>
-					    	</dl>
-					    	<dl class="row" *ngIf="risorsaDetail.dataOut">
-							  <dt class="col-sm-3 text-right">Data Dimissione :</dt>
-							  <dd class="col-sm-9">{{ risorsaDetail.dataOut | date : "dd/MM/yyyy" }}</dd>
-					    	</dl>
-					    	<dl class="row">
-							  <dt class="col-sm-3 text-right">Costo Giornaliero:</dt>
-							  <dd class="col-sm-9">{{ risorsaDetail.costoGiornaliero}}</dd>
-					    	</dl>
+        <!-- end card body -->
+        <div class="card-footer " >
+          <a
+            routerLink="/risorsa/list"
+            class="btn btn-outline-secondary mr-2"
+            style="width: 80px"
+          >
+            <i class="fa fa-chevron-left"></i> Back
+          </a>
 
-                <dl class="row">
-                  <dt class="col-sm-3 text-right">CV:</dt>
-                  <dd class="col-sm-9">
-                    <a href="#" (click)="downloadCV(risorsaDetail!.cv!.id!)">Scarica CV</a>
-                  </dd>
-                </dl>
+          <button
+            class="btn btn-success mr-2"
+            (click)="toggleCommesse = !toggleCommesse"
+            *ngIf="risorsaDetail.commesse!.length > 0"
+          >
+            {{ toggleCommesse ? "Nascondi Commesse" : "Mostra Commesse" }}
+          </button>
+          <button
+            class="btn btn-success disabled"
+            *ngIf="risorsaDetail.commesse!.length == 0"
+          >
+            Nessuna Commessa
+          </button>
+        </div>
+      </div>
+      <!-- end card -->
+    </div>
 
+    <!-- end container -->
+  </div>
+</main>
 
-					    <!-- end card body -->
-              <div class='card-footer'>
-                <a routerLink="/risorsa/list" class='btn btn-outline-secondary' style='width:80px'>
-                    <i class='fa fa-chevron-left'></i> Back
-                </a>
-            </div>
-
-					    </div>
-					<!-- end card -->
-					</div>
-
-
-			  <!-- end container -->
-			  </div>
-
-			</main>
-
-			<!-- Footer -->
-
+<!-- Footer -->

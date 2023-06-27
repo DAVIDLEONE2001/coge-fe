@@ -33,9 +33,7 @@ export class RisorsaService {
   findById(id: number): Observable<Risorsa | undefined> {
     // return of(this.atletiDBMock.find((atleta: Atleta) => atleta.id === id));
     const url = `${this.risorsaUrl}/${id}`;
-    return this.http
-      .get<Risorsa>(url)
-      .pipe(catchError(this.handleError));
+    return this.http.get<Risorsa>(url).pipe(catchError(this.handleError));
   }
 
   removeRisorsa(id: number): Observable<any> {
@@ -48,6 +46,14 @@ export class RisorsaService {
       .delete<any>(url, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
+
+  editRisorsa(risorsa: any): Observable<Risorsa> {
+    const url = `${this.risorsaUrl}/${risorsa.id}`;
+    return this.http
+      .put<Risorsa>(url, risorsa, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
   handleError(error: any) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

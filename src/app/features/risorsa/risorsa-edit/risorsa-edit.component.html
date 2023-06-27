@@ -217,6 +217,32 @@
             </span>
           </div>
 
+
+          <div class="form-group">
+            <label for="commessaSearch">Commessa</label>
+            <input
+              type="text"
+              class="form-control"
+              name="commessaSearch"
+              [(ngModel)]="commessaSearch"
+              (input)="filterCheckboxes()"
+              placeholder="Filtra commesse per descrizione"
+            >
+            <div *ngFor="let commessa of commesseFiltrate ">
+              <label>
+                <input
+                  type="checkbox"
+                  name="commessaCheckbox"
+                  [(ngModel)]="idsCommesse[commessa.id]"
+                  (change)="updateIdsCommesse()"
+                >
+                {{ commessa.descrizione }}: {{ commessa.codice }}
+              </label>
+            </div>
+          </div>
+
+
+
           <div class="col-md-6" >
             <label>CV <span class="text-danger">*</span></label>
             <input
