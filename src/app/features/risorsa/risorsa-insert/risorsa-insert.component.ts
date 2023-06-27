@@ -29,6 +29,7 @@ export class RisorsaInsertComponent {
       payload: [],
     },
   };
+  descrizioneFile: string = 'default';
   errorMessage: string = '';
 
   constructor(private risorsaService: RisorsaService, private router: Router) {}
@@ -36,7 +37,7 @@ export class RisorsaInsertComponent {
   save(risorsaForm: NgForm): void {
     if (risorsaForm.valid) {
       // this.risorsaNew.cv=this.cv
-      console.log(this.risorsaNew)
+      console.log(this.risorsaNew);
       this.risorsaService.addRisorsa(this.risorsaNew).subscribe({
         next: (risorsaItem) => (this.risorsaNew = risorsaItem),
         complete: () =>
@@ -53,20 +54,43 @@ export class RisorsaInsertComponent {
   getTodayDate(): string {
     return new Date().toISOString().split('T')[0];
   }
+  // handleCVFile(event: any): void {
+  //   const files: FileList = event.target.files;
+  //   if (files && files.length > 0) {
+  //     const fileReader = new FileReader();
+  //     fileReader.onload = () => {
+  //       const payload: Uint8Array = new Uint8Array(fileReader.result as ArrayBuffer);
+  //       const attachment: Attachment = {
+  //         id: undefined,
+  //         fileName: files[0].name,
+  //         contentType: files[0].type,
+  //         descrizione: 'tipo1',
+  //         dataCreazione: new Date(),
+  //         payload: Array.from(payload) // Converti Uint8Array in un array di numeri
+  //       };
+  //       this.risorsaNew.cv = attachment;
+  //     };
+  //     fileReader.readAsArrayBuffer(files[0]);
+  //   }
+  // }
   handleCVFile(event: any): void {
     const files: FileList = event.target.files;
     if (files && files.length > 0) {
       const fileReader = new FileReader();
       fileReader.onload = () => {
-        const payload: Uint8Array = new Uint8Array(fileReader.result as ArrayBuffer);
+        const arrayBuffer: ArrayBuffer = fileReader.result as ArrayBuffer;
+        const uintArray = new Uint8Array(arrayBuffer);
+        const payload: number[] = Array.from(uintArray);
+
         const attachment: Attachment = {
           id: undefined,
           fileName: files[0].name,
           contentType: files[0].type,
-          descrizione: 'tipo1',
+          descrizione: this.descrizioneFile,
           dataCreazione: new Date(),
-          payload: Array.from(payload) // Converti Uint8Array in un array di numeri
+          payload: payload,
         };
+
         this.risorsaNew.cv = attachment;
       };
       fileReader.readAsArrayBuffer(files[0]);

@@ -1,5 +1,6 @@
 import { Attachment } from "./attachment";
 import { Commessa } from "./commessa";
+import { Rapportino } from "./rapportino";
 
 export interface Risorsa {
   id?:number;
@@ -12,5 +13,5 @@ export interface Risorsa {
   costoGiornaliero:number;
   cv?:Attachment;
   commesse?:Array<Commessa>;//to-do
-  rapportini?:string;//to-do
+  rapportini?:Array<Rapportino>;//to-do
 }
