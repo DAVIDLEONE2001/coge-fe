@@ -1,5 +1,5 @@
 export interface Commessa {
-  id: number;
+  id?: number;
   codice: string;
   dataIn: Date;
   dataOut: Date;

@@ -123,6 +123,6 @@ export class RisorsaEditComponent {
   updateIdsCommesse() {
     this.idsCommesse = this.commesse
       .filter((commessa) => commessa)
-      .map((commessa) => commessa.id);
+      .map((commessa) => commessa.id!);
   }
 }

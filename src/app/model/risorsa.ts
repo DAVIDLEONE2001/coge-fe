@@ -7,7 +7,7 @@ export interface Risorsa {
   nome:string;
   cognome:string;
   dataIn:Date;
-  dataOut:Date;
+  dataOut?:Date;
   codiceFiscale:string;
   email:string;
   costoGiornaliero:number;

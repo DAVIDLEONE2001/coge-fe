@@ -18,7 +18,7 @@ export class RisorsaInsertComponent implements OnInit {
     nome: '',
     cognome: '',
     dataIn: new Date(),
-    dataOut: new Date(),
+    dataOut: undefined,
     codiceFiscale: '',
     email: '',
     costoGiornaliero: 0,

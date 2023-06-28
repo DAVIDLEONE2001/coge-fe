@@ -233,7 +233,7 @@
                 <input
                   type="checkbox"
                   name="commessaCheckbox"
-                  [(ngModel)]="idsCommesse[commessa.id]"
+                  [(ngModel)]="idsCommesse[commessa.id!]"
                   (change)="updateIdsCommesse()"
                 >
                 {{ commessa.descrizione }}: {{ commessa.codice }}
