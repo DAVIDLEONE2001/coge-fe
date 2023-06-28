@@ -19,6 +19,11 @@ import { FormsModule } from '@angular/forms';
 import { RisorsaDeleteComponent } from './features/risorsa/risorsa-delete/risorsa-delete.component';
 import { RisorsaInsertComponent } from './features/risorsa/risorsa-insert/risorsa-insert.component';
 import { RisorsaEditComponent } from './features/risorsa/risorsa-edit/risorsa-edit.component';
+import { RapportinoListComponent } from './features/rapportino/rapportino-list/rapportino-list.component';
+import { RapportinoEditComponent } from './features/rapportino/rapportino-edit/rapportino-edit.component';
+import { RapportinoDetailComponent } from './features/rapportino/rapportino-detail/rapportino-detail.component';
+import { RapportinoDeleteComponent } from './features/rapportino/rapportino-delete/rapportino-delete.component';
+import { RapportinoCreateComponent } from './features/rapportino/rapportino-create/rapportino-create.component';
 
 @NgModule({
   declarations: [
@@ -37,9 +42,14 @@ import { RisorsaEditComponent } from './features/risorsa/risorsa-edit/risorsa-ed
     RisorsaDetailComponent,
     RisorsaDeleteComponent,
     RisorsaInsertComponent,
-    RisorsaEditComponent
+    RisorsaEditComponent,
+    RapportinoListComponent,
+    RapportinoEditComponent,
+    RapportinoDetailComponent,
+    RapportinoDeleteComponent,
+    RapportinoCreateComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule,FormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

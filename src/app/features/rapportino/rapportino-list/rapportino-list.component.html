@@ -20,45 +20,42 @@
         <h5>Lista dei risultati</h5>
       </div>
       <div class="card-body">
-        <a class="btn btn-primary" routerLink="/commessa/insert">Add New</a>
+        <a class="btn btn-primary" routerLink="/rapportino/create">Add New</a>
 
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
               <tr>
                 <th>Id</th>
-                <th>Descrizione</th>
-                <th>Codice</th>
-                <th>DataIn</th>
-                <th>DataOut</th>
-                <th>Importo</th>
+                <th>Numero Giorni</th>
+                <th>Risorsa</th>
                 <th>Azioni</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let commessaItem of listaCommesse">
-                <td>{{ commessaItem.id }}</td>
-                <td>{{ commessaItem.descrizione }}</td>
-                <td>{{ commessaItem.codice }}</td>
-                <td>{{ commessaItem.dataIn | date : "dd/MM/yyyy" }}</td>
-                <td>{{ commessaItem.dataOut | date : "dd/MM/yyyy" }}</td>
-                <td>{{ commessaItem.importo }}</td>
+              <tr *ngFor="let rapportinoItem of listaRapportini">
+                <td>{{ rapportinoItem.id }}</td>
+                <td>{{ rapportinoItem.numeroGiorni }}</td>
+                <td>
+                  {{ rapportinoItem.risorsa!.cognome }}
+                  {{ rapportinoItem.risorsa!.nome }}
+                </td>
                 <td>
                   <a
                     class="btn btn-sm btn-outline-primary ml-auto mr-auto"
                     style="margin-right: 5px"
-                    [routerLink]="['/commessa/show', commessaItem.id]"
+                    [routerLink]="['/rapportino/detail', rapportinoItem.id]"
                     >Visualizza dettaglio</a
                   >
                   <a
                     class="btn btn-sm btn-outline-primary ml-auto mr-auto"
                     style="margin-right: 5px"
-                    [routerLink]="['/commessa/edit', commessaItem.id]"
+                    [routerLink]="['/rapportino/edit', rapportinoItem.id]"
                     >Edit</a
                   >
                   <a
                     class="btn btn-outline-danger btn-sm ml-auto mr-auto"
-                    [routerLink]="['/commessa/delete', commessaItem.id]"
+                    [routerLink]="['/rapportino/delete', rapportinoItem.id]"
                     >Delete</a
                   >
                 </td>

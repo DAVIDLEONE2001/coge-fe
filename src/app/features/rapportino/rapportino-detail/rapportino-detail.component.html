@@ -1,0 +1,39 @@
+<main class="flex-shrink-0">
+  <div class="container">
+    <div class="card">
+      <div class="card-header">Visualizza dettaglio</div>
+
+      <div class="card-body">
+        <dl class="row">
+          <dt class="col-sm-3 text-right">Numero Giorni:</dt>
+          <dd class="col-sm-9">{{ rapportinoDetail?.numeroGiorni }}</dd>
+        </dl>
+        <dl class="row">
+          <dt class="col-sm-3 text-right">Risorsa:</dt>
+          <dd class="col-sm-9">
+            {{ rapportinoDetail?.risorsa?.cognome }}
+            {{ rapportinoDetail?.risorsa?.nome }}
+          </dd>
+        </dl>
+        <dl class="row">
+          <dt class="col-sm-3 text-right">Commessa:</dt>
+          <dd class="col-sm-9">
+            {{ rapportinoDetail?.commessa?.descrizione }}
+          </dd>
+        </dl>
+      </div>
+      <div class="card-footer">
+        <button
+          class="btn btn-outline-secondary"
+          style="width: 80px"
+          (click)="onBack()"
+        >
+          <i class="fa fa-chevron-left"></i> Back
+        </button>
+      </div>
+      <!-- end card body -->
+    </div>
+
+    <!-- end card -->
+  </div>
+</main>

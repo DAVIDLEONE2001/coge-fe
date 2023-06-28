@@ -12,6 +12,11 @@ import { RisorsaDetailComponent } from './features/risorsa/risorsa-detail/risors
 import { RisorsaDeleteComponent } from './features/risorsa/risorsa-delete/risorsa-delete.component';
 import { RisorsaInsertComponent } from './features/risorsa/risorsa-insert/risorsa-insert.component';
 import { RisorsaEditComponent } from './features/risorsa/risorsa-edit/risorsa-edit.component';
+import { RapportinoListComponent } from './features/rapportino/rapportino-list/rapportino-list.component';
+import { RapportinoEditComponent } from './features/rapportino/rapportino-edit/rapportino-edit.component';
+import { RapportinoDetailComponent } from './features/rapportino/rapportino-detail/rapportino-detail.component';
+import { RapportinoDeleteComponent } from './features/rapportino/rapportino-delete/rapportino-delete.component';
+import { RapportinoCreateComponent } from './features/rapportino/rapportino-create/rapportino-create.component';
 
 const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
@@ -26,6 +31,12 @@ const routes: Routes = [
   { path: 'commessa/create', component: CommessaCreateComponent },
   { path: 'commessa/edit/:id', component: CommessaEditComponent },
   { path: 'commessa/delete/:id', component: CommessaDeleteComponent },
+  { path: 'rapportino/list', component: RapportinoListComponent },
+  { path: 'rapportino/detail/:id', component: RapportinoDetailComponent },
+  { path: 'rapportino/create', component: RapportinoCreateComponent },
+  { path: 'rapportino/edit/:id', component: RapportinoEditComponent },
+  { path: 'rapportino/delete/:id', component: RapportinoDeleteComponent },
+
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
 ];
 

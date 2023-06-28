@@ -55,7 +55,7 @@ export class RisorsaEditComponent {
       .findById(Number(this.activatedRoute.snapshot.paramMap.get('id')))
       .subscribe((atlObs) => (this.risorsaNew = atlObs!));
 
-    this.commessaService.getCommessa().subscribe({
+    this.commessaService.listAll().subscribe({
       next: (commesse) => {
         this.commesse = commesse;
         this.commesseFiltrate = commesse;

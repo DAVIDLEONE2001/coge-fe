@@ -56,7 +56,7 @@ export class RisorsaInsertComponent implements OnInit {
     } else this.commesseFiltrate = this.commesse;
   }
   ngOnInit(): void {
-    this.commessaService.getCommessa().subscribe({
+    this.commessaService.listAll().subscribe({
       next: (commesse) => {
         this.commesse = commesse;
         this.commesseFiltrate = commesse;
